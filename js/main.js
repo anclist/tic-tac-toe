@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  var container = document.querySelector('.container');
+  var container = document.querySelector('.container'),
+      ex = 'x',
+      cero = '0'
+      counter = 0
 
   container.addEventListener('click', function(e) {
-    if ( e.target.classList.contains('item') ) {
-      console.log(e.target);
+    if (counter % 2 == 0) {
+      e.target.innerText = ex;
+    } else {
+      e.target.innerText = cero;
     }
+    counter++
   });
 
 
