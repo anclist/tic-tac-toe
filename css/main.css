@@ -1,3 +1,7 @@
+.title {
+  text-align: center;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,4 +17,9 @@
   height: 200px;
   font-size: 150px;
   text-align: center;
+}
+
+.item:hover {
+  border: solid 5px green;
+  cursor: pointer;
 }
