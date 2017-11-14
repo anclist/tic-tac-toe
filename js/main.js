@@ -1,21 +1,82 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   const container = document.querySelector('.container'),
-        ex = 'x',
-        zero = '0',
-        one = document.querySelector('.item_1'),
-        two = document.querySelector('.item_2'),
-        three = document.querySelector('.item_3'),
-        four = document.querySelector('.item_4'),
-        five = document.querySelector('.item_5'),
-        six = document.querySelector('.item_6'),
-        seven = document.querySelector('.item_7'),
-        eight = document.querySelector('.item_8'),
-        nine = document.querySelector('.item_9');
+        ex = 'X',
+        zero = '0';
 
   var counter = 0,
       turn = document.querySelector('.turn');
 
+  var grid = {
+    A1: 0,
+    B1: 0,
+    C1: 0,
+    A2: 0,
+    B2: 0,
+    C2: 0,
+    A3: 0,
+    B3: 0,
+    C3: 0,
+    A1: 0,
+    A2: 0,
+    A3: 0,
+    B1: 0,
+    B2: 0,
+    B3: 0,
+    C1: 0,
+    C2: 0,
+    C3: 0,
+    A1: 0,
+    B2: 0,
+    C3: 0,
+    C1: 0,
+    B2: 0,
+    A3: 0
+  }
+
+  function xWins() {
+    alert(`${ex} Wins`);
+  }
+
+  function zeroWins() {
+    alert(`${zero} Wins`);
+  }
+
+  function reload() {
+    window.location.reload(true);
+  }
+
+  function firstRow() {
+    return grid['A1'] + grid['B1'] + grid['C1']
+  }
+
+  function secondRow() {
+    return grid['A2'] + grid['B2'] + grid['C2']
+  }
+
+  function thirdRow() {
+    return grid['A3'] + grid['B3'] + grid['C3']
+  }
+
+  function firstColumn() {
+    return grid['A1'] + grid['A2'] + grid['A3']
+  }
+
+  function secondColumn() {
+    return grid['B1'] + grid['B2'] + grid['B3']
+  }
+
+  function thirdColumn() {
+    return grid['C1'] + grid['C2'] + grid['C3']
+  }
+
+  function firstDiagonal() {
+    return grid['A1'] + grid['B2'] + grid['C3']
+  }
+
+  function secondDiagonal() {
+    return grid['A3'] + grid['B2'] + grid['C1']
+  }
 
 
   container.addEventListener('click', function(e) {
@@ -24,45 +85,62 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (counter % 2 == 0) {
       e.target.innerText = ex;
       turn.innerText = `It's ${zero}'s turn!`
+      grid[e.target.classList[1]] = 1;
     } else {
       e.target.innerText = zero;
       turn.innerText = `It's ${ex}'s turn!`
+      grid[e.target.classList[1]] = -1;
     };
     counter++;
+    if (firstRow() === 3) {
+      xWins();
+      reload();
+    } else if (firstRow() === -3) {
+      zeroWins();
+      reload();
+    } else if (secondRow() === 3) {
+      xWins();
+      reload();
+    } else if (secondRow() === -3) {
+      zeroWins();
+      reload();
+    } else if (thirdRow() === 3) {
+      xWins();
+      reload();
+    } else if (thirdRow() === -3) {
+      zeroWins();
+      reload();
+    } else if (firstColumn() === 3) {
+      xWins();
+      reload();
+    } else if (firstColumn() === -3) {
+      zeroWins();
+      reload();
+    } else if (secondColumn() === 3) {
+      xWins();
+      reload();
+    } else if (secondColumn() === -3) {
+      zeroWins();
+      reload();
+    } else if (thirdColumn() === 3) {
+      xWins();
+      reload();
+    } else if (thirdColumn() === -3) {
+      zeroWins();
+      reload();
+    } else if (firstDiagonal() === 3) {
+      xWins();
+      reload();
+    } else if (firstDiagonal() === -3) {
+      zeroWins();
+      reload();
+    } else if (secondDiagonal() === 3) {
+      xWins();
+      reload();
+    } else if (secondDiagonal() === -3) {
+      zeroWins();
+      reload();
+    }
   });
 
 });
-
-
-// if (one.innerText == two.innerText && one.innerText == three.innerText && two.innerText == three.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (four.innerText == five.innerText && four.innerText == six.innerText && five.innerText == six.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (seven.innerText == eight.innerText && seven.innerText == nine.innerText && eight.innerText == nine.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (one.innerText == four.innerText && one.innerText == seven.innerText && four.innerText == seven.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (two.innerText == five.innerText && two.innerText == eight.innerText && five.innerText == eight.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (three.innerText == six.innerText && three.innerText == nine.innerText && six.innerText == nine.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (one.innerText == five.innerText && one.innerText == nine.innerText && five.innerText == nine.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// } else if (three.innerText == five.innerText && three.innerText == seven.innerText && five.innerText == seven.innerText) {
-//   console.log(`${e.target.innerText} Wins`)
-// };
-
-
-
-
-
-// const winningCombinations = [
-//   ['A1', 'B1', 'C1'],
-//   ['A2', 'B2', 'C2'],
-//   ['A3', 'B3', 'C3'],
-//   ['A1', 'A2', 'A3'],
-//   ['B1', 'B2', 'B3'],
-//   ['C1', 'C2', 'C3'],
-//   ['A1', 'B2', 'C3'],
-//   ['C1', 'B2', 'A3']
-// ]
