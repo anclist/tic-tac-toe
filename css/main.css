@@ -1,5 +1,11 @@
-.title, .turn {
+.title, .turn, .button {
   text-align: center;
+  font-size: 25px;
+}
+
+.top_container {
+  width: 300px;
+  margin: 10px auto;
 }
 
 .container {

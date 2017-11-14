@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   const container = document.querySelector('.container'),
+        button = document.querySelector('.button')
         ex = 'X',
         zero = '0';
 
@@ -78,6 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
     return grid['A3'] + grid['B2'] + grid['C1']
   }
 
+  button.addEventListener('click', function() {
+    reload();
+  });
 
   container.addEventListener('click', function(e) {
     if (e.target.innerText == ex || e.target.innerText == zero) {
